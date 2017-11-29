@@ -1,0 +1,5 @@
+{
+  "Description": "Maps vehicle types between VISSIM and MOVES. The key of this dictionary is the vehicle type in VISSIM. You can add as many rows as you want, but the last row SHOULD NOT HAVE A COMMA. In the program, the left value will be converted to the right value.",
+  "100": "21",
+  "200": "32"
+}

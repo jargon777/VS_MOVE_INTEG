@@ -1,0 +1,5 @@
+{
+  "Description": "Maps vehicle types between VISSIM and MOVES. The key of this dictionary is the vehicle type in VISSIM. The dictionary output is what it maps to in MOVES.",
+  "Car": "21",
+  "HGV": "32"
+}

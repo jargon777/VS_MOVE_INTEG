@@ -1,0 +1,11 @@
+{
+  "Description": "This part of the code defines which columns you have in your VISSIM data. You should be sure that vehicle number, simulation second, speed, vehicle type and acceleration are provided.",
+  "SimulationSecond": "SIMSEC",
+  "VehicleNumber": "NO",
+  "LinkIndex": "LANE\\LINK\\NO",
+  "RouteIndex": "ROUTENO",
+  "Position": "POS",
+  "Speed": "SPEED",
+  "Acceleration": "ACCELERATION",
+  "VehicleType": "VEHTYPE\\CATEGORY"
+}

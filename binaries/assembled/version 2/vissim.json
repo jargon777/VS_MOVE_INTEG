@@ -1,0 +1,11 @@
+{
+  "Description": "This part of the code defines which columns you have in your VISSIM data. Deleting rows or changing the left values will result in an error being thrown. You should be sure that vehicle number, simulation second, speed, vehicle type and acceleration are provided. If you have different column names change the value on the right.",
+  "SimulationSecond": "SIMSEC",
+  "VehicleNumber": "NO",
+  "LinkIndex": "LANE\\LINK\\NO",
+  "RouteIndex": "ROUTENO",
+  "Position": "POS",
+  "Speed": "SPEED",
+  "Acceleration": "ACCELERATION",
+  "VehicleType": "VEHTYPE"
+}

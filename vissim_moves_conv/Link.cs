@@ -30,7 +30,7 @@ namespace VISSIM_MOVES_CONV {
         public void clustered_analysis(RichTextBox ConsoleBox, string empty_mode) {
             //prepare the vehicles for analysis by adding vehicles with only the trajectories on the link to the vehiclepath.
             foreach(KeyValuePair<int, VehicleTrajectory> Snippet in this.TrajectorySnippet) {
-                this.Link_Path.Vehicles_On_Route.Add(new InputVehicles(Snippet.Key, this.Vehicles[Snippet.Key].vehicle_VISSIM_type, Snippet.Value));
+                this.Link_Path.Vehicles_On_Route.Add(new InputVehicles(Snippet.Key, this.Vehicles[Snippet.Key].vehicle_VISSIM_type, Snippet.Value, this.Vehicles[Snippet.Key].vehicle_type));
             }
             this.Link_Path.AssignClusterGroups(this.cluster_count, ConsoleBox, empty_mode);
         }

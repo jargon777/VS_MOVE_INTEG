@@ -35,3 +35,13 @@ C:\Users\Matthew Muresan\Downloads\VISSIM_MOVES_CONV\VISSIM_MOVES_CONV\obj\Debug
 C:\Users\Matthew Muresan\Downloads\VISSIM_MOVES_CONV\VISSIM_MOVES_CONV\obj\Debug\VISSIM_MOVES_CONV.MainWindow.resources
 C:\Users\Matthew Muresan\Downloads\VISSIM_MOVES_CONV\VISSIM_MOVES_CONV\obj\Debug\VISSIM_MOVES_CONV.Properties.Resources.resources
 C:\Users\Matthew Muresan\Downloads\VISSIM_MOVES_CONV\VISSIM_MOVES_CONV\obj\Debug\VISSIM_MOVES_CONV.csproj.GenerateResource.Cache
+C:\Users\Matthew Muresan\Source\Repos\VS_MOVE_INTEG\VISSIM_MOVES_CONV\bin\Debug\VISSIM_MOVES_CONV.exe.config
+C:\Users\Matthew Muresan\Source\Repos\VS_MOVE_INTEG\VISSIM_MOVES_CONV\bin\Debug\VISSIM_MOVES_CONV.exe
+C:\Users\Matthew Muresan\Source\Repos\VS_MOVE_INTEG\VISSIM_MOVES_CONV\bin\Debug\VISSIM_MOVES_CONV.pdb
+C:\Users\Matthew Muresan\Source\Repos\VS_MOVE_INTEG\VISSIM_MOVES_CONV\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Matthew Muresan\Source\Repos\VS_MOVE_INTEG\VISSIM_MOVES_CONV\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Matthew Muresan\Source\Repos\VS_MOVE_INTEG\VISSIM_MOVES_CONV\obj\Debug\VISSIM_MOVES_CONV.MainWindow.resources
+C:\Users\Matthew Muresan\Source\Repos\VS_MOVE_INTEG\VISSIM_MOVES_CONV\obj\Debug\VISSIM_MOVES_CONV.Properties.Resources.resources
+C:\Users\Matthew Muresan\Source\Repos\VS_MOVE_INTEG\VISSIM_MOVES_CONV\obj\Debug\VISSIM_MOVES_CONV.csproj.GenerateResource.Cache
+C:\Users\Matthew Muresan\Source\Repos\VS_MOVE_INTEG\VISSIM_MOVES_CONV\obj\Debug\VISSIM_MOVES_CONV.exe
+C:\Users\Matthew Muresan\Source\Repos\VS_MOVE_INTEG\VISSIM_MOVES_CONV\obj\Debug\VISSIM_MOVES_CONV.pdb

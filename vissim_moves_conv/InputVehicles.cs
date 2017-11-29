@@ -13,28 +13,27 @@ namespace VISSIM_MOVES_CONV {
     class InputVehicles {
         public int vehicle_number;
         public string vehicle_VISSIM_type;
+        private string _converted_vehicle_type;
         public string vehicle_type {
             get {
-                if (this.vehicle_VISSIM_type == "Car") return "21"; //21 is the passenger car type.
-                if (this.vehicle_VISSIM_type == "HGV") return "32"; //32 is the light commercial vehicle type.
-                return "0";
+                return _converted_vehicle_type;
             }
-            /*set {
-                this.vehicle_VISSIM_type = value;
-            }*/
         }
         public VehicleTrajectory Trajectory;
 
         //CON
-        public InputVehicles(int vehicle_number, int second_stamp, double speed, double acceleration, double position, int assoc_link, int assoc_rout, string vehicle_VISSIM_type) {
+        public InputVehicles(int vehicle_number, int second_stamp, double speed, double acceleration, double position, int assoc_link, int assoc_rout, string vehicle_VISSIM_type, Dictionary<string, string> TypeMap) {
             this.vehicle_number = vehicle_number;
             this.vehicle_VISSIM_type = vehicle_VISSIM_type;
+            if (TypeMap.ContainsKey(vehicle_VISSIM_type)) this._converted_vehicle_type = TypeMap[vehicle_VISSIM_type];
+            else this._converted_vehicle_type = "0"; //assign a type of zero to unmatched vehicles.
             this.Trajectory = new VehicleTrajectory(second_stamp, speed, acceleration, position, assoc_link, assoc_rout);
         }
-        public InputVehicles(int vehicle_number, string vehicle_VISSIM_type, VehicleTrajectory trajectory) {
+        public InputVehicles(int vehicle_number, string vehicle_VISSIM_type, VehicleTrajectory trajectory, string converted_vehicle_type) {
             this.vehicle_number = vehicle_number;
             this.Trajectory = trajectory;
             this.vehicle_VISSIM_type = vehicle_VISSIM_type;
+            this._converted_vehicle_type = converted_vehicle_type;
         }
     }
     class VehicleTrajectory {

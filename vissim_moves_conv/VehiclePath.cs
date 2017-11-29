@@ -202,8 +202,8 @@ namespace VISSIM_MOVES_CONV {
                     for (int ii = 0; ii < this.Path_Cluster.Count; ii++) {
                         int random = randomizer.Next(this.Vehicles_On_Route.Count);
                         InputVehicles rand = this.Vehicles_On_Route[random];
-                        InputVehicles o_traj = new InputVehicles(0, 0, 0, 0, 0, 0, 0, "DUMMY"); //add dummy vehicles to allow averaging.
-                        InputVehicles c_traj = new InputVehicles(0, 0, 0, 0, 0, 0, 0, "DUMMY");
+                        InputVehicles o_traj = new InputVehicles(0, 0, 0, 0, 0, 0, 0, "DUMMY", new Dictionary<string, string>()); //add dummy vehicles to allow averaging.
+                        InputVehicles c_traj = new InputVehicles(0, 0, 0, 0, 0, 0, 0, "DUMMY", new Dictionary<string, string>());
                         o_traj.Trajectory = this.InitialTrajectories[ii];
                         c_traj.Trajectory = this.Path_Cluster[ii].Average_Trajectory;
                         this.Path_Cluster[ii].Vehicles_In_Cluster = new List<InputVehicles>(); //erase the container of vehicles.

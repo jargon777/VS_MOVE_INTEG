@@ -9,6 +9,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 
+using Newtonsoft.Json;
+
 namespace VISSIM_MOVES_CONV {
     static class Program {
         /// <summary>
@@ -24,7 +26,11 @@ namespace VISSIM_MOVES_CONV {
     class ProgramDelegator {
         private List<VehiclePath> _Paths;
         private Dictionary<int, Link> _Links;
-        
+
+        //Settings JSON
+        private Dictionary<string, string> _Categories = new Dictionary<string, string>();
+        private Dictionary<string, string> _VehicleMap = new Dictionary<string, string>();
+
         //INPUTS
         private string _in_veh = "";
 
@@ -63,6 +69,34 @@ namespace VISSIM_MOVES_CONV {
             this._vehicle_count = 0;
             this._cluster_mode = cluster_mode;
             this._empty_mode = empty_mode;
+
+            //Load some custom config files around the column names and headers
+            if (File.Exists("vissim.json")) {
+                using (StreamReader r = new StreamReader("vissim.json")) {
+                    string json = r.ReadToEnd();
+                    this._Categories = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+                }
+            }
+            else {
+                this._Categories.Add("SimulationSecond", "SIMSEC");
+                this._Categories.Add("VehicleNumber", "NO");
+                this._Categories.Add("LinkIndex", "LANE\\LINK\\NO");
+                this._Categories.Add("RouteIndex", "ROUTENO");
+                this._Categories.Add("Position", "POS");
+                this._Categories.Add("Speed", "SPEED");
+                this._Categories.Add("Acceleration", "ACCELERATION");
+                this._Categories.Add("VehicleType", "VEHTYPE\\CATEGORY");
+            }
+            if (File.Exists("vehiclemap.json")) {
+                using (StreamReader r = new StreamReader("vehiclemap.json")) {
+                    string json = r.ReadToEnd();
+                    this._VehicleMap = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+                }
+            }
+            else {
+                this._VehicleMap.Add("Car", "21");
+                this._VehicleMap.Add("HGV", "32");
+            }
         }
 
         public void Run(RichTextBox ConsoleBox) {
@@ -524,14 +558,14 @@ namespace VISSIM_MOVES_CONV {
                         }
                         rowdata[0] = tmp[1];
                     }
-                    if (rowdata[i] == "SIMSEC") simsec_index = i;
-                    else if (rowdata[i] == "NO") no_index = i;
-                    else if (rowdata[i] == "LANE\\LINK\\NO") link_index = i;
-                    else if (rowdata[i] == "ROUTENO") route_index = i;
-                    else if (rowdata[i] == "POS") pos_index = i;
-                    else if (rowdata[i] == "SPEED") speed_index = i;
-                    else if (rowdata[i] == "ACCELERATION") accel_index = i;
-                    else if (rowdata[i] == "VEHTYPE\\CATEGORY") vehtype_index = i;
+                    if (rowdata[i] == this._Categories["SimulationSecond"]) simsec_index = i;
+                    else if (rowdata[i] == this._Categories["VehicleNumber"]) no_index = i;
+                    else if (rowdata[i] == this._Categories["LinkIndex"]) link_index = i;
+                    else if (rowdata[i] == this._Categories["RouteIndex"]) route_index = i;
+                    else if (rowdata[i] == this._Categories["Position"]) pos_index = i;
+                    else if (rowdata[i] == this._Categories["Speed"]) speed_index = i;
+                    else if (rowdata[i] == this._Categories["Acceleration"]) accel_index = i;
+                    else if (rowdata[i] == this._Categories["VehicleType"]) vehtype_index = i;
                 }
 
                 //check the essential tags
@@ -604,7 +638,7 @@ namespace VISSIM_MOVES_CONV {
                         vehicle_type = rowdata[vehtype_index];
 
                         _vehicle_count++; //keep track of how many vehicles there are.
-                        ActiveVehicles.Add(new InputVehicles(veh_number, (int)second_stamp + time_offset, speed, acceleration, position, assoc_link, assoc_rout, vehicle_type));
+                        ActiveVehicles.Add(new InputVehicles(veh_number, (int)second_stamp + time_offset, speed, acceleration, position, assoc_link, assoc_rout, vehicle_type, this._VehicleMap));
                         
                         //first instance of vehicle. However, can be repeat re-activated vehicle.
                         if (!Links.ContainsKey(assoc_link)) Links.Add(assoc_link, new Link(assoc_link));
